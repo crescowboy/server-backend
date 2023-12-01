@@ -1,4 +1,4 @@
-const z = require('zod')
+import z from 'zod'
 // const { object } = require('zod')
 
 
@@ -15,11 +15,11 @@ const productSchema = z.object({
     
 })
 
-const validateProduct = (input)=>{
+export const validateProduct = (input)=>{
     return  productSchema.safeParse(input)
 }
 
-function validatePartialProduct(input){
+export function validatePartialProduct(input){
     return productSchema.partial().safeParse(input);
     
     
@@ -28,7 +28,3 @@ function validatePartialProduct(input){
 
 
 
-module.exports = {
-    validateProduct,
-    validatePartialProduct
-}
