@@ -1,7 +1,7 @@
 import express, { json } from 'express';
-import cors from 'cors';
 // import products from './json/products.json';
-
+import {productsRouter}  from './routes/products.js'
+import { corsMiddleware } from './middlewares/cors.js';
 
 
 
@@ -13,49 +13,11 @@ const PORT = process.env.PORT ?? 5000
 app.use(json());
 
 //Middleware cors
-app.use(cors({
-    origin: (origin, callback) =>{
-        const ACCEPTED_ORIGINS = [
-            'http://localhost:3000',
-            'http://localhost:5000'
-        ]
-
-        if(ACCEPTED_ORIGINS.includes(origin)){
-            return callback(null, true)
-        }
-
-        if(!origin){
-            return callback(null, true)
-        }
-
-        return callback(new Error('Not allowed by CORS'))
-    }
-    
-}))
+app.use(corsMiddleware())
 
 
 
-app.get('/products', (req, res)=>{
-    
-    
-});
-
-app.delete('/products/:id', (req,res)=>{
-
-})
-
-app.get('/products/:id', (req, res)=>{
-    
-})
-
-app.post('/products', (req, res)=>{
-    
-})
-
-
-app.patch('/products/:id', (req,res)=>{
-    
-})
+app.use('/products', productsRouter)
 
 // app.options('/products/:id', (req,res)=>{
 //     const origin = req.header('origin')
