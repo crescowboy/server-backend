@@ -1,17 +1,13 @@
 import {Router} from 'express'
 import { readJSON } from './utils.js';
 import { randomUUID } from 'node:crypto';
+import { ProductModel } from '../models/product.js';
 const router = Router()
 const products = readJSON('./json/products.json')
 
 router.get('/', (req, res)=>{
     const { type } = req.query
-    if(type){
-        const filteredType = products.filter(
-            product => product.type.some(g => g.toLowerCase() === type.toLowerCase())
-        )
-        return res.json(filteredType)
-    }
+    const products = ProductModel.getAll({type})
     res.json(products)
 })
 
