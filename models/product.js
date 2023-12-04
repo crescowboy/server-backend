@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
-import {readJSON} from '../utils'
-const products = readJSON('../product.json')
+import {readJSON} from '../utils.js'
+const products = readJSON('./json/products.json')
 
 export class ProductModel{
     static getAll ({type}) {

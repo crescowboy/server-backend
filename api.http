@@ -14,7 +14,7 @@ Content-Type: application/json
 {
         
         "name": "Producto 3333",
-        "description": "Descripción del Producto 3",
+        "description": "Descripción del Producto 43",
         "price": 1,
         "imageUrl": "https://via.placeholder.com/200x200?text=Product3",
         "type": [
@@ -27,7 +27,7 @@ PATCH http://localhost:5000/products/2
 Content-Type: application/json
 
 {
-  "name": "Producto4455933",
+  "name": "P",
         "description": "Descripción del Producto 3",
         "price": 134,
         "imageUrl": "https://via.placeholder.com/200x200?text=Product3",

@@ -1,6 +1,5 @@
 import cors from 'cors'
-export const corsMiddleware = () =>{
-    cors({
+export const corsMiddleware = () =>cors({
         origin: (origin, callback) =>{
             const ACCEPTED_ORIGINS = [
                 'http://localhost:3000',
@@ -19,4 +18,3 @@ export const corsMiddleware = () =>{
         }
         
     })
-}
