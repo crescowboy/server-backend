@@ -22,6 +22,10 @@ Content-Type: application/json
         ]
       }
 
+
+###Borrar un producto
+DELETE http://localhost:5000/products/2
+
 ###Actualizar una pelicula
 PATCH http://localhost:5000/products/2
 Content-Type: application/json
