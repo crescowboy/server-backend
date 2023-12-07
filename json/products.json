@@ -81,6 +81,26 @@
         "type": [
           "pantalon"
         ]
+      },
+      {
+        "id": 9,
+        "name": "Producto 9",
+        "description": "Descripción del Producto 9",
+        "price": 14.99,
+        "imageUrl": "https://via.placeholder.com/200x200?text=Product9",
+        "type": [
+          "pantalon"
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Producto 10",
+        "description": "Descripción del Producto 10",
+        "price": 24.99,
+        "imageUrl": "https://via.placeholder.com/200x200?text=Product10",
+        "type": [
+          "pantalon"
+        ]
       }
       
     ]
