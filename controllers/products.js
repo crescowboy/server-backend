@@ -1,4 +1,5 @@
-import { ProductModel } from "../models/product.js";
+// import { ProductModel } from "../models/product.js";
+import { ProductModel } from "../models/mysql/product.js";
 import { validatePartialProduct, validateProduct } from "../schemas/products.js";
 
 export class ProductController{
