@@ -31,7 +31,22 @@ export class ProductModel{
     }
 
     static async create ({ input }){
+        const {
+            type: typeInput,
+            name,
+            description,
+            price,
+            imageUrl,
 
+        } = input
+
+        const result = await connection.query(
+            `INSERT INTO product(id, name, description, price, imgUrl)
+             VALUES (? , ?, ?, ?, ?, ?);`,
+             [name, description, price, imageUrl]
+        )
+
+        console.log(result)
     }
 
     static async delete ({ id }){
