@@ -13,9 +13,9 @@ Content-Type: application/json
 
 {
         
-        "name": "Producto 3333",
+        "name": "Producto 393",
         "description": "Descripción del Producto 43",
-        "price": 1.2,
+        "price": 2,
         "imageUrl": "https://via.placeholder.com/200x200?text=Product3",
         "type": [
           "camiseta"

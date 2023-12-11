@@ -40,13 +40,28 @@ export class ProductModel{
 
         } = input
 
-        const result = await connection.query(
-            `INSERT INTO product(id, name, description, price, imgUrl)
-             VALUES (? , ?, ?, ?, ?, ?);`,
-             [name, description, price, imageUrl]
+        const [uuidResult] = await connection.query('SELECT UUID() uuid;')
+        const [{ uuid }] = uuidResult
+
+        try{
+            await connection.query(
+                `INSERT INTO product (id, name, description, price, imgUrl)
+                 VALUES ((UUID_TO_BIN("${uuid}")), ?, ?, ?, ?);`,
+                 [name, description, price, imageUrl]
+            )
+        }catch(e){
+            throw new Error('Error creating product')
+        }
+
+        
+
+        const [product] = await connection.query(
+            `SELECT name, description, price, imgUrl, BIN_TO_UUID(id) id
+            FROM product WHERE id = UUID_TO_BIN(?);`,
+            [uuid]
         )
 
-        console.log(result)
+        return product[0]
     }
 
     static async delete ({ id }){
