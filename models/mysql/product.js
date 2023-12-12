@@ -9,8 +9,8 @@ const config = {
 }
 
 const connection = await mysql.createConnection(config)
-export class ProductModel{
-    static async getAll({ type }){
+export class ProductModel {
+    static async getAll({ type }) {
         const [product] = await connection.query(
             'SELECT name, description, price, imgUrl, BIN_TO_UUID(id) id FROM product;'
         )
@@ -18,19 +18,19 @@ export class ProductModel{
         return product
     }
 
-    static async getById({ id }){
+    static async getById({ id }) {
         const [product] = await connection.query(
             `SELECT name, description, price, imgUrl, BIN_TO_UUID(id) id 
             FROM product WHERE id = UUID_TO_BIN(?);`,
             [id]
         )
 
-        if(product.length == 0) return null
+        if (product.length == 0) return null
 
         return product[0]
     }
 
-    static async create ({ input }){
+    static async create({ input }) {
         const {
             type: typeInput,
             name,
@@ -43,17 +43,17 @@ export class ProductModel{
         const [uuidResult] = await connection.query('SELECT UUID() uuid;')
         const [{ uuid }] = uuidResult
 
-        try{
+        try {
             await connection.query(
                 `INSERT INTO product (id, name, description, price, imgUrl)
                  VALUES ((UUID_TO_BIN("${uuid}")), ?, ?, ?, ?);`,
-                 [name, description, price, imageUrl]
+                [name, description, price, imageUrl]
             )
-        }catch(e){
-            throw new Error('Error creating product')
+        } catch (e) {
+            throw new Error('Error creating products')
         }
 
-        
+
 
         const [product] = await connection.query(
             `SELECT name, description, price, imgUrl, BIN_TO_UUID(id) id
@@ -64,12 +64,12 @@ export class ProductModel{
         return product[0]
     }
 
-    static async delete ({ id }){
+    static async delete({ id }) {
 
     }
 
-    static async update ({ id, input}){
+    static async update({ id, input }) {
 
     }
-    
+
 }
