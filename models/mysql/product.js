@@ -65,7 +65,11 @@ export class ProductModel {
     }
 
     static async delete({ id }) {
-
+        const [product] = await connection.query(
+            `DELETE FROM product WHERE id = UUID_TO_BIN(?)`,
+            [id]
+        )
+        return product
     }
 
     static async update({ id, input }) {

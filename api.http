@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
         
-        "name": "Producto 393",
+        "name": "Producto ejemplo",
         "description": "Descripción del Producto 43",
         "price": 2,
         "imageUrl": "https://via.placeholder.com/200x200?text=Product3",
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 
 ###Borrar un producto
-DELETE http://localhost:5000/products/2
+DELETE http://localhost:5000/products/b368ab36-9fac-11ee-b927-489ebd108d78
 
 ###Actualizar una pelicula
 PATCH http://localhost:5000/products/3
