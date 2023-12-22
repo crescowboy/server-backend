@@ -73,7 +73,30 @@ export class ProductModel {
     }
 
     static async update({ id, input }) {
+        const {
+            type: typeInput,
+            name,
+            description,
+            price,
+            imageUrl,
 
+        } = input
+
+         // Ejecuta la consulta de actualización
+        await connection.query(
+        `UPDATE product SET 
+        name = '${name}',
+        description = '${description}',
+        price = '${price}',
+        imageURL = '${imageUrl}'
+        WHERE id = ?`, [id]
+    );
+
+        // Consulta el producto actualizado después de la actualización
+        const [updatedProduct] = await connection.query('SELECT * FROM product WHERE id = ?', [id]);
+
+        // Retorna el producto actualizado
+        return updatedProduct[0];
     }
 
 }

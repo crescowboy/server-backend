@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
         
-        "name": "Producto ejemplo",
+        "name": "Producto we",
         "description": "Descripción del Producto 43",
         "price": 2,
         "imageUrl": "https://via.placeholder.com/200x200?text=Product3",
@@ -27,12 +27,12 @@ Content-Type: application/json
 DELETE http://localhost:5000/products/b368ab36-9fac-11ee-b927-489ebd108d78
 
 ###Actualizar una pelicula
-PATCH http://localhost:5000/products/3
+PATCH http://localhost:5000/products/31852bff-9fb5-11ee-b927-489ebd108d78
 Content-Type: application/json
 
 {
-  "name": "P",
-        "description": "Descripción del Producto 3",
+  "name": "Product update 122",
+        "description": "Descripción del Producto 43",
         "price": 134,
         "imageUrl": "https://via.placeholder.com/200x200?text=Product3",
         "type": [
