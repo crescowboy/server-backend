@@ -73,30 +73,40 @@ export class ProductModel {
     }
 
     static async update({ id, input }) {
+        console.log(id);
         const {
             type: typeInput,
             name,
             description,
             price,
             imageUrl,
-
-        } = input
-
-         // Ejecuta la consulta de actualización
-        await connection.query(
-        `UPDATE product SET 
-        name = '${name}',
-        description = '${description}',
-        price = '${price}',
-        imageURL = '${imageUrl}'
-        WHERE id = ?`, [id]
-    );
-
-        // Consulta el producto actualizado después de la actualización
-        const [updatedProduct] = await connection.query('SELECT * FROM product WHERE id = ?', [id]);
-
-        // Retorna el producto actualizado
-        return updatedProduct[0];
+        } = input;
+    
+        const sql = `UPDATE product SET 
+            name = '${name}',
+            description = '${description}',
+            price = '${price}',
+            imgUrl = '${imageUrl}'
+            WHERE id = UUID_TO_BIN(?)`;
+    
+        console.log(sql);
+    
+        try {
+            // Ejecuta la consulta de actualización
+            await connection.query(sql, [id]);
+    
+            // Consulta el producto actualizado después de la actualización
+            const [updatedProduct] = await connection.query(`SELECT name, description, price, imgUrl, BIN_TO_UUID(id) id 
+            FROM product WHERE id = UUID_TO_BIN(?);`,
+            [id]);
+    
+            // Retorna el producto actualizado
+            return updatedProduct[0];
+        } catch (error) {
+            console.error('Error en la actualización:', error);
+            throw new Error('Error en la actualización del producto');
+        }
     }
+    
 
 }

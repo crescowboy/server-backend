@@ -2,7 +2,7 @@
 GET http://localhost:5000/products
 ###Para recuperar un producto por el id
 
-GET http://localhost:5000/products/8422c6de-94bc-11ee-ab26-489ebd108d78
+GET http://localhost:5000/products/e5e43138-a1d6-11ee-ad00-489ebd108d78
 
 ###Para recuperar por tipo
 GET http://localhost:5000/products?type=camiseta
@@ -13,8 +13,8 @@ Content-Type: application/json
 
 {
         
-        "name": "Producto we",
-        "description": "Descripción del Producto 43",
+        "name": "Producto gusto",
+        "description": "Descripción del Producto 40",
         "price": 2,
         "imageUrl": "https://via.placeholder.com/200x200?text=Product3",
         "type": [
@@ -27,14 +27,14 @@ Content-Type: application/json
 DELETE http://localhost:5000/products/b368ab36-9fac-11ee-b927-489ebd108d78
 
 ###Actualizar una pelicula
-PATCH http://localhost:5000/products/31852bff-9fb5-11ee-b927-489ebd108d78
+PATCH http://localhost:5000/products/e5e43138-a1d6-11ee-ad00-489ebd108d78
 Content-Type: application/json
 
 {
-  "name": "Product update 122",
+  "name": "Product final",
         "description": "Descripción del Producto 43",
-        "price": 134,
-        "imageUrl": "https://via.placeholder.com/200x200?text=Product3",
+        "price": 300,
+        "imageUrl": "https://via.placeholder.com/200x200text=Product4",
         "type": [
           "camiseta"
         ]
