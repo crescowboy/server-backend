@@ -11,12 +11,42 @@ const config = {
 const connection = await mysql.createConnection(config)
 export class ProductModel {
     static async getAll({ type }) {
-        const [product] = await connection.query(
-            'SELECT name, description, price, imgUrl, BIN_TO_UUID(id) id FROM product;'
-        )
-
-        return product
+        // Inicializar un array para almacenar los resultados
+        let allProducts = [];
+    
+        // Filtrar por tipo si se proporciona
+        if (type) {
+            // Obtener el tipo
+            const [types] = await connection.query(
+                'SELECT id, name FROM type WHERE LOWER(name) = ?;', [type.toLowerCase()]
+            );
+    
+            // Verificar si se encontró el tipo
+            if (types.length > 0) {
+                const [{ id }] = types;
+    
+                // Obtener productos por tipo
+                const [productsTypes] = await connection.query(
+                    'SELECT  BIN_TO_UUID(id) product_id FROM type_product WHERE id = ?;', [id]
+                );
+    
+                // Agregar productos por tipo al array de resultados
+                allProducts = allProducts.concat(productsTypes);
+            }
+        }
+    
+        // Obtener todos los productos si no se proporciona un tipo o si no se encontró el tipo
+        if (allProducts.length === 0) {
+            const [allProductsResult] = await connection.query(
+                'SELECT name, description, price, imgUrl, BIN_TO_UUID(id) id FROM product;'
+            );
+    
+            allProducts = allProducts.concat(allProductsResult);
+        }
+    
+        return allProducts;
     }
+    
 
     static async getById({ id }) {
         const [product] = await connection.query(

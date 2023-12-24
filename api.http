@@ -5,7 +5,7 @@ GET http://localhost:5000/products
 GET http://localhost:5000/products/e5e43138-a1d6-11ee-ad00-489ebd108d78
 
 ###Para recuperar por tipo
-GET http://localhost:5000/products?type=camiseta
+GET http://localhost:5000/products?type=pantalon
 
 ###Para crear un producto
 POST http://localhost:5000/products
@@ -13,12 +13,12 @@ Content-Type: application/json
 
 {
         
-        "name": "Producto gusto",
+        "name": "Producto pant",
         "description": "Descripción del Producto 40",
         "price": 2,
         "imageUrl": "https://via.placeholder.com/200x200?text=Product3",
         "type": [
-          "camiseta"
+          "pantalon"
         ]
       }
 
