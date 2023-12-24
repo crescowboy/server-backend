@@ -27,7 +27,7 @@ export class ProductModel {
     
                 // Obtener productos por tipo
                 const [productsTypes] = await connection.query(
-                    'SELECT  BIN_TO_UUID(id) product_id FROM type_product WHERE id = ?;', [id]
+                    'SELECT BIN_TO_UUID(products_id) id FROM type_product WHERE types_id = ?;', [id]
                 );
     
                 // Agregar productos por tipo al array de resultados
