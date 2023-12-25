@@ -1,15 +1,23 @@
 import {Router} from 'express'
 import { ProductController } from '../controllers/products.js';
-export const productsRouter = Router()
+
+export const createProductRouter = ({ productModel }) =>{
+    const productsRouter = Router()
+
+    const productController = new ProductController({ productModel })
+
+    productsRouter.get('/', productController.getAll)
+
+    productsRouter.get('/:id', productController.getById)
+
+    productsRouter.post('/', productController.create)
+
+    productsRouter.delete('/:id', productController.delete)
+
+    productsRouter.patch('/:id', productController.update)
+
+    return productsRouter
+}
 
 
-productsRouter.get('/', ProductController.getAll)
-
-productsRouter.get('/:id', ProductController.getById)
-
-productsRouter.post('/', ProductController.create)
-
-productsRouter.delete('/:id', ProductController.delete)
-
-productsRouter.patch('/:id', ProductController.update)
 
