@@ -13,8 +13,8 @@ Content-Type: application/json
 
 {
         
-        "name": "Producto pantalon",
-        "description": "Descripción del Producto 40",
+        "name": "Producto blusa",
+        "description": "Descripción prueba",
         "price": 2,
         "imageUrl": "https://via.placeholder.com/200x200?text=Product3",
         "type": [
